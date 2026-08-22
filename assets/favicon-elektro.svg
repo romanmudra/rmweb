@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Roman Mudra — elektrikářské práce">
+  <title>Roman Mudra — elektrikářské práce</title>
+  <defs>
+    <linearGradient id="rm-grad-copper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C1712F"/>
+      <stop offset="100%" stop-color="#F2B15C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Měděná varianta pro elektrikářskou podstránku — stejná značka,
+       jiný odstín pro obor, přesně jako logo v hlavičce té stránky. -->
+  <rect width="64" height="64" rx="13" fill="#17181A"/>
+
+  <g transform="translate(-6.98 5.42) scale(0.836)">
+    <text x="15" y="45" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-weight="200" font-size="48" fill="#ffffff">R</text>
+    <text x="38" y="52" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-weight="300" font-size="48" fill="url(#rm-grad-copper)">M</text>
+  </g>
+</svg>
