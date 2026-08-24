@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Roman Mudra — elektrikářské práce">
+  <title>Roman Mudra — elektrikářské práce</title>
+
+  <!-- Shodné se základním faviconem, liší se jen gradient "M" —
+       měděná varianta pro elektrikářskou podstránku, stejně jako
+       logo v hlavičce té stránky. Chování je stejné: na světlé liště
+       tmavší odstíny, na tmavé původní jasná měď. -->
+  <style>
+    .rm-r      { fill: #111111; }
+    .rm-grad-a { stop-color: #8F4F21; }
+    .rm-grad-b { stop-color: #C1712F; }
+    @media (prefers-color-scheme: dark) {
+      .rm-r      { fill: #FFFFFF; }
+      .rm-grad-a { stop-color: #C1712F; }
+      .rm-grad-b { stop-color: #F2B15C; }
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="rm-grad-copper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop class="rm-grad-a" offset="0%"/>
+      <stop class="rm-grad-b" offset="100%"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(-15.69 -0.46) scale(1.023)">
+    <text class="rm-r" x="15" y="45" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-weight="200" font-size="48">R</text>
+    <text x="38" y="52" font-family="Montserrat, 'Segoe UI', Arial, sans-serif" font-weight="300" font-size="48" fill="url(#rm-grad-copper)">M</text>
+  </g>
+</svg>
