@@ -756,3 +756,28 @@ body.uvod-foto .site-header--electro .btn-primary--electro:hover{ background: va
   background: #2B1B0E;
   box-shadow: 0 2px 4px rgba(43,27,14,.12), 0 16px 30px -16px rgba(43,27,14,.4), 0 48px 84px -48px rgba(43,27,14,.65);
 }
+
+/* =========================================================
+   Oprava vysunutého menu na mobilu
+   MUSÍ ZŮSTAT ÚPLNĚ NA KONCI — přebíjí pravidla výš, která
+   mají stejnou specificitu (media query specificitu nemění).
+
+   Prvek s `backdrop-filter` se stává vztažným rámcem pro
+   potomky s `position: fixed`. Menu je uvnitř <header>, takže
+   se `inset: var(--header-h) 0 0 0` nepočítalo od okraje
+   obrazovky, ale od lišty vysoké 77 px. Panel měl proto místo
+   735 px jen 65 px — vyjel z boku a byl vysoký na dva prsty.
+
+   Na mobilu proto rozostření vypínáme a lišta si bere plně
+   krycí pozadí. Rozostření za lištou stejně na telefonu skoro
+   nikdo nepozná, zato kvůli němu nešlo menu použít.
+   ========================================================= */
+@media (max-width: 760px){
+  .site-header{ backdrop-filter: none; background: var(--paper); }
+  /* Pravidla s :has() stojí samostatně — ve společném seznamu
+     selektorů by je prohlížeč bez podpory zahodil i s tím vedle. */
+  body.uvod-foto .site-header.je-posunuta{ backdrop-filter: none; background: var(--brand-ink); }
+  body.uvod-foto .site-header:has(.site-nav.is-open){ backdrop-filter: none; background: var(--brand-ink); }
+  body.uvod-foto .site-header--electro.je-posunuta{ background: #2B1B0E; }
+  body.uvod-foto .site-header--electro:has(.site-nav.is-open){ background: #2B1B0E; }
+}
