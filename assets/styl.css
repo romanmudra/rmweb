@@ -702,17 +702,67 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .balicek-cena{ width: 100%; }
 }
 @media (max-width: 760px){
+  /* Rozměry jsou zapsané výslovně (top/left/width/height), NE přes
+     `inset`. Menu leží uvnitř <header>, a jakmile lišta dostane
+     `backdrop-filter`, stane se pro ně vztažným rámcem — `bottom: 0`
+     by pak znamenalo spodní okraj lišty, ne obrazovky, a panel by měl
+     výšku 65 px. S výslovnou výškou vyjde správně tak i tak, takže
+     rozostření lišty může zůstat. */
   .site-nav{
-    position: fixed; inset: var(--header-h) 0 0 0; background: var(--paper);
+    position: fixed;
+    top: var(--header-h); left: 0;
+    width: 100%; height: calc(100dvh - var(--header-h));
     flex-direction: column; align-items: flex-start; padding: var(--space-6) var(--pad-inline);
-    gap: var(--space-5); transform: translateX(100%); transition: transform .3s var(--ease);
-    overflow-y: auto; border-top: 1px solid var(--line);
+    gap: var(--space-5); overflow-y: auto; border-top: 1px solid var(--line);
+    /* Krytí .94, ne méně: při .88 měl odkaz v menu nad tmavým obsahem
+       kontrast 4,38 — pod hranicí 4,5:1. Rozostření je i tak vidět. */
+    background: rgba(255,255,255,.94);
+    -webkit-backdrop-filter: blur(22px) saturate(1.6);
+    backdrop-filter: blur(22px) saturate(1.6);
+    transform: translateX(100%);
+    /* Zavřený panel se nedá tabulátorem projít — bez toho by se
+       fokus schovával mimo obrazovku. */
+    visibility: hidden;
+    transition: transform .42s cubic-bezier(.22,.61,.36,1), visibility 0s linear .42s;
   }
-  .site-nav.is-open{ transform: translateX(0); }
+  .site-nav.is-open{
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform .42s cubic-bezier(.22,.61,.36,1), visibility 0s;
+  }
+
+  /* Položky dojíždějí zprava po jedné, až když je panel skoro na místě.
+     Bez zpoždění by se hýbaly zároveň s panelem a nebylo by to poznat. */
+  .site-nav .nav-link,
+  .site-nav .btn{
+    opacity: 0; transform: translateX(26px);
+    transition: opacity .34s var(--ease), transform .34s var(--ease);
+  }
+  .site-nav.is-open .nav-link,
+  .site-nav.is-open .btn{ opacity: 1; transform: translateX(0); }
+  .site-nav.is-open .nav-link:nth-child(1){ transition-delay: .13s; }
+  .site-nav.is-open .nav-link:nth-child(2){ transition-delay: .19s; }
+  .site-nav.is-open .nav-link:nth-child(3){ transition-delay: .25s; }
+  .site-nav.is-open .nav-link:nth-child(4){ transition-delay: .31s; }
+  .site-nav.is-open .nav-link:nth-child(5){ transition-delay: .37s; }
+  .site-nav.is-open .btn{ transition-delay: .40s; }
   /* Na stránkách s fotkou v úvodu je i vysunuté menu tmavé — jinak by
      přes průhlednou lištu prosvítala fotka do bílého panelu. */
-  body.uvod-foto .site-nav{ background: var(--brand-ink); border-top-color: rgba(255,255,255,.16); }
-  body.uvod-foto .site-header--electro .site-nav{ background: #2B1B0E; }
+  body.uvod-foto .site-nav{ background: rgba(7,45,64,.82); border-top-color: rgba(255,255,255,.16); }
+  body.uvod-foto .site-header--electro .site-nav{ background: rgba(43,27,14,.84); }
+
+  /* Kde rozostření nefunguje (starší Android, vypnutá GPU akcelerace),
+     musí být panel krycí — jinak by se text mísil s obsahem pod ním. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+    .site-nav{ background: var(--paper); }
+    body.uvod-foto .site-nav{ background: var(--brand-ink); }
+    body.uvod-foto .site-header--electro .site-nav{ background: #2B1B0E; }
+  }
+
+  /* Kdo si vypnul animace, nemá čekat na dojezd položek. */
+  @media (prefers-reduced-motion: reduce){
+    .site-nav, .site-nav .nav-link, .site-nav .btn{ transition: none !important; transition-delay: 0s !important; }
+  }
   .nav-links{ flex-direction: column; align-items: stretch; gap: var(--space-2); width: 100%; }
   .nav-link{ font-size: 1.05rem; min-height: 52px; }
   .site-nav .btn{ width: 100%; }
@@ -764,20 +814,26 @@ body.uvod-foto .site-header--electro .btn-primary--electro:hover{ background: va
 
    Prvek s `backdrop-filter` se stává vztažným rámcem pro
    potomky s `position: fixed`. Menu je uvnitř <header>, takže
-   se `inset: var(--header-h) 0 0 0` nepočítalo od okraje
+   `inset: var(--header-h) 0 0 0` se nepočítalo od okraje
    obrazovky, ale od lišty vysoké 77 px. Panel měl proto místo
    735 px jen 65 px — vyjel z boku a byl vysoký na dva prsty.
 
-   Na mobilu proto rozostření vypínáme a lišta si bere plně
-   krycí pozadí. Rozostření za lištou stejně na telefonu skoro
-   nikdo nepozná, zato kvůli němu nešlo menu použít.
+   Řeší se to výše: panel má výslovně zapsanou šířku a výšku
+   místo `inset`, takže vyjde správně i uvnitř vztažného rámce.
+   Rozostření lišty tím pádem může zůstat.
+
+   ⚠️ Kdyby se `inset` do `.site-nav` někdy vrátil, tahle chyba
+   se vrátí s ním.
    ========================================================= */
 @media (max-width: 760px){
-  .site-header{ backdrop-filter: none; background: var(--paper); }
+  /* Menu je pod lištou, takže pod ní na mobilu neprosvítá obsah
+     stránky, ale vršek panelu. Krytí je proto o něco vyšší než
+     na desktopu, ať přechod mezi lištou a panelem není vidět. */
+  .site-header{ background: rgba(255,255,255,.9); }
   /* Pravidla s :has() stojí samostatně — ve společném seznamu
      selektorů by je prohlížeč bez podpory zahodil i s tím vedle. */
-  body.uvod-foto .site-header.je-posunuta{ backdrop-filter: none; background: var(--brand-ink); }
-  body.uvod-foto .site-header:has(.site-nav.is-open){ backdrop-filter: none; background: var(--brand-ink); }
-  body.uvod-foto .site-header--electro.je-posunuta{ background: #2B1B0E; }
-  body.uvod-foto .site-header--electro:has(.site-nav.is-open){ background: #2B1B0E; }
+  body.uvod-foto .site-header.je-posunuta{ background: rgba(7,45,64,.9); }
+  body.uvod-foto .site-header:has(.site-nav.is-open){ background: rgba(7,45,64,.9); }
+  body.uvod-foto .site-header--electro.je-posunuta{ background: rgba(43,27,14,.9); }
+  body.uvod-foto .site-header--electro:has(.site-nav.is-open){ background: rgba(43,27,14,.9); }
 }
