@@ -708,12 +708,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
      by pak znamenalo spodní okraj lišty, ne obrazovky, a panel by měl
      výšku 65 px. S výslovnou výškou vyjde správně tak i tak, takže
      rozostření lišty může zůstat. */
+  /* Panel jde přes CELOU výšku, tedy i pod lištu, a obsah odsazuje
+     shora o její výšku. Lišta při otevřeném menu žádné vlastní pozadí
+     nemá — prosvítá jí panel, takže to působí jako jedna skleněná
+     plocha, ne jako pruh nalepený na panel. */
   .site-nav{
     position: fixed;
-    top: var(--header-h); left: 0;
-    width: 100%; height: calc(100dvh - var(--header-h));
-    flex-direction: column; align-items: flex-start; padding: var(--space-6) var(--pad-inline);
-    gap: var(--space-5); overflow-y: auto; border-top: 1px solid var(--line);
+    top: 0; left: 0;
+    width: 100%; height: 100dvh;
+    flex-direction: column; align-items: flex-start;
+    padding: calc(var(--header-h) + var(--space-6)) var(--pad-inline) var(--space-6);
+    gap: var(--space-5); overflow-y: auto;
     /* Krytí .94, ne méně: při .88 měl odkaz v menu nad tmavým obsahem
        kontrast 4,38 — pod hranicí 4,5:1. Rozostření je i tak vidět. */
     background: rgba(255,255,255,.94);
@@ -748,8 +753,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .site-nav.is-open .btn{ transition-delay: .40s; }
   /* Na stránkách s fotkou v úvodu je i vysunuté menu tmavé — jinak by
      přes průhlednou lištu prosvítala fotka do bílého panelu. */
-  body.uvod-foto .site-nav{ background: rgba(7,45,64,.82); border-top-color: rgba(255,255,255,.16); }
+  body.uvod-foto .site-nav{ background: rgba(7,45,64,.82); }
   body.uvod-foto .site-header--electro .site-nav{ background: rgba(43,27,14,.84); }
+
+  /* Logo a křížek musí zůstat nad panelem. Logo je v HTML PŘED menu,
+     takže by ho jinak panel překryl — menu je polohované, a to
+     v pořadí vykreslování vyhrává. */
+  .site-header .logo,
+  .nav-toggle{ position: relative; z-index: 2; }
 
   /* Kde rozostření nefunguje (starší Android, vypnutá GPU akcelerace),
      musí být panel krycí — jinak by se text mísil s obsahem pod ním. */
@@ -826,14 +837,40 @@ body.uvod-foto .site-header--electro .btn-primary--electro:hover{ background: va
    se vrátí s ním.
    ========================================================= */
 @media (max-width: 760px){
-  /* Menu je pod lištou, takže pod ní na mobilu neprosvítá obsah
-     stránky, ale vršek panelu. Krytí je proto o něco vyšší než
-     na desktopu, ať přechod mezi lištou a panelem není vidět. */
   .site-header{ background: rgba(255,255,255,.9); }
-  /* Pravidla s :has() stojí samostatně — ve společném seznamu
-     selektorů by je prohlížeč bez podpory zahodil i s tím vedle. */
   body.uvod-foto .site-header.je-posunuta{ background: rgba(7,45,64,.9); }
-  body.uvod-foto .site-header:has(.site-nav.is-open){ background: rgba(7,45,64,.9); }
   body.uvod-foto .site-header--electro.je-posunuta{ background: rgba(43,27,14,.9); }
-  body.uvod-foto .site-header--electro:has(.site-nav.is-open){ background: rgba(43,27,14,.9); }
+
+  /* ⚠️ TOHLE JE TA VĚC, KVŮLI KTERÉ ROZOSTŘENÍ „ZLOBILO".
+     Prvek s `backdrop-filter` zakládá pro své potomky nové pozadí
+     ke snímání. Menu leží uvnitř lišty, takže jeho rozostření
+     nesnímalo stránku pod sebou, ale prázdné pozadí lišty — a
+     vypadalo proto jako plocha bez efektu. Rozostření tam bylo,
+     jen nemělo co rozmazávat.
+
+     Při otevřeném menu proto lištu zbavujeme pozadí i rozostření.
+     Nic tím neztratí: přes celou její plochu leží panel, který má
+     rozostření vlastní a snímá skutečný obsah stránky.
+
+     Pravidla jsou tři a každé stojí samostatně. Musí mít stejnou
+     specificitu jako modrá a měděná pravidla výš — jinak prohrají
+     a lišta si pozadí i rozostření nechá. */
+  .site-header:has(.site-nav.is-open){
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
+  body.uvod-foto .site-header:has(.site-nav.is-open){
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
+  body.uvod-foto .site-header--electro:has(.site-nav.is-open){
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
 }
