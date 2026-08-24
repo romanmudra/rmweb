@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Šablona pro podklady k webu | Roman Mudra</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg?v=3" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+body{font-family:"Montserrat",system-ui,sans-serif;line-height:1.7;color:#17181A;background:#F2F4F7;font-size:15px}
+.list{max-width:860px;margin:32px auto;background:#fff;padding:56px clamp(24px,5vw,72px);border-radius:14px;box-shadow:0 24px 60px -44px rgba(23,24,26,.45)}
+.hlava{border-bottom:2px solid #17181A;padding-bottom:20px;margin-bottom:28px}
+.stitek{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0D6E9E;font-weight:800}
+h1{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-top:8px}
+.uvod{background:#E3F3FB;border-left:3px solid #0D6E9E;border-radius:0 8px 8px 0;padding:16px 20px;margin-bottom:32px;font-size:14px;color:#0A4A6B}
+h2{font-size:15px;font-weight:800;letter-spacing:.02em;margin:34px 0 6px;text-transform:uppercase;color:#0D6E9E;display:flex;align-items:center;gap:10px}
+.cislo{width:24px;height:24px;border-radius:50%;background:#0D6E9E;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.napoveda{font-size:13.5px;color:#696D75;margin-bottom:12px}
+p{margin-bottom:10px;color:#3C4046}
+ul{margin:0 0 12px 22px}
+li{margin-bottom:6px;color:#3C4046}
+.pole{border:1px dashed #C6CCD4;border-radius:8px;background:#FAFBFC;padding:14px 16px;min-height:74px;margin-bottom:6px;font-size:13.5px;color:#9AA1AB}
+.pole--maly{min-height:44px}
+.dva{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tisk{position:sticky;top:16px;float:right;margin:-8px 0 0 16px}
+.tisk button{background:#0D6E9E;color:#fff;border:0;border-radius:999px;padding:11px 22px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;min-height:44px}
+.tisk button:hover{background:#0A5578}
+.zpet{display:inline-block;margin-top:40px;font-size:13px;color:#0D6E9E;font-weight:600}
+@media print{
+  body{background:#fff;font-size:11pt}
+  .list{box-shadow:none;margin:0;padding:0;max-width:none}
+  .tisk,.zpet{display:none}
+  h2{color:#000}.cislo{background:#000}
+  .uvod{background:none;border-left:2px solid #000;color:#000}
+}
+@media (max-width:640px){.dva{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="list">
+
+  <div class="tisk"><button type="button" onclick="window.print()">Vytisknout / uložit jako PDF</button></div>
+
+  <header class="hlava">
+    <span class="stitek">Podklady k webu</span>
+    <h1>Co od vás potřebuju, než začnu</h1>
+  </header>
+
+  <div class="uvod">
+    Nemusíte vyplnit všechno a nemusíte psát krásně — stačí odrážky. Čím víc toho
+    dodáte na začátku, tím dřív bude web hotový a tím míň se pak bude předělávat.
+    S čímkoli si nebudete vědět rady, napište mi a projdeme to spolu.
+  </div>
+
+  <h2><span class="cislo">1</span>Základní údaje</h2>
+  <div class="dva">
+    <div><p class="napoveda">Název firmy nebo jméno</p><div class="pole pole--maly"></div></div>
+    <div><p class="napoveda">IČO</p><div class="pole pole--maly"></div></div>
+    <div><p class="napoveda">Telefon na web</p><div class="pole pole--maly"></div></div>
+    <div><p class="napoveda">E-mail na web</p><div class="pole pole--maly"></div></div>
+    <div><p class="napoveda">Adresa / kde působíte</p><div class="pole pole--maly"></div></div>
+    <div><p class="napoveda">Doména (pokud už ji máte)</p><div class="pole pole--maly"></div></div>
+  </div>
+
+  <h2><span class="cislo">2</span>Čím se živíte</h2>
+  <p class="napoveda">Pár vět o tom, co děláte a pro koho. Tohle bude základ úvodní stránky.</p>
+  <div class="pole"></div>
+
+  <h2><span class="cislo">3</span>Co má web zákazníkovi udělat</h2>
+  <p class="napoveda">Vyberte, co je hlavní: aby zavolal, vyplnil poptávku, našel ceník, přišel na provozovnu…</p>
+  <div class="pole"></div>
+
+  <h2><span class="cislo">4</span>Služby nebo produkty</h2>
+  <p class="napoveda">Seznam toho, co nabízíte. U každé položky jedna dvě věty, ať má návštěvník představu.</p>
+  <div class="pole"></div>
+
+  <h2><span class="cislo">5</span>Čím se lišíte od konkurence</h2>
+  <p class="napoveda">Co umíte vy a ostatní ne. Rychlost, záruka, dojezd, léta praxe, cokoli.</p>
+  <div class="pole"></div>
+
+  <h2><span class="cislo">6</span>Reference</h2>
+  <p class="napoveda">Jméno zákazníka a co o vás řekl. I dvě věty stačí — a hlavně ať jsou pravdivé.</p>
+  <div class="pole"></div>
+
+  <h2><span class="cislo">7</span>Fotky a logo</h2>
+  <ul>
+    <li>Logo — nejlépe ve formátu SVG, PDF nebo AI. Pokud máte jen obrázek, dejte co největší.</li>
+    <li>Fotky vaší práce — z mobilu stačí, ale ať jsou ostré a za světla.</li>
+    <li>Fotka vás nebo týmu — u řemesel a služeb funguje víc než cokoli jiného.</li>
+  </ul>
+  <p class="napoveda">Fotky pošlete přes úschovnu nebo sdílený disk, e-mailem se často nevejdou.</p>
+
+  <h2><span class="cislo">8</span>Weby, které se vám líbí</h2>
+  <p class="napoveda">Dva tři odkazy a u každého větu proč. Nemusí být z vašeho oboru.</p>
+  <div class="pole"></div>
+
+  <h2><span class="cislo">9</span>Co naopak nechcete</h2>
+  <p class="napoveda">Barvy, styly nebo weby, které se vám nelíbí. Tohle ušetří spoustu času.</p>
+  <div class="pole"></div>
+
+  <a class="zpet" href="../index.html">← Zpět na web</a>
+</div>
+</body>
+</html>

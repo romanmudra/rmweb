@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- POZOR: tohle je VZOR, ne hotová smlouva. Než ji někomu pošleš,
+     doplň hranaté závorky a nech si ji projít někým, kdo se ve
+     smluvním právu orientuje. Není to právní poradenství. -->
+
+<title>Smlouva o tvorbě webových stránek — vzor | Roman Mudra</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg?v=3" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+body{font-family:"Montserrat",system-ui,sans-serif;line-height:1.7;color:#17181A;background:#F2F4F7;font-size:15px}
+.list{max-width:860px;margin:32px auto;background:#fff;padding:56px clamp(24px,5vw,72px);border-radius:14px;box-shadow:0 24px 60px -44px rgba(23,24,26,.45)}
+.hlava{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #17181A;padding-bottom:20px;margin-bottom:36px}
+.stitek{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0D6E9E;font-weight:800}
+h1{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-top:8px}
+h2{font-size:15px;font-weight:800;letter-spacing:.02em;margin:32px 0 10px;text-transform:uppercase;color:#0D6E9E}
+h2:first-of-type{margin-top:0}
+p{margin-bottom:10px;color:#3C4046}
+ol,ul{margin:0 0 12px 22px}
+li{margin-bottom:6px;color:#3C4046}
+.strany{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:8px}
+.strana{background:#F2F4F7;border-radius:10px;padding:18px 20px;font-size:14px}
+.strana b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#696D75;margin-bottom:6px}
+.dopln{background:#FFF6DA;border-bottom:1px solid #E0C56A;padding:0 3px;font-weight:600}
+.podpisy{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px}
+.podpis{border-top:1px solid #17181A;padding-top:8px;font-size:13px;color:#696D75}
+.tisk{position:sticky;top:16px;float:right;margin:-8px 0 0 16px}
+.tisk button{background:#0D6E9E;color:#fff;border:0;border-radius:999px;padding:11px 22px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;min-height:44px}
+.tisk button:hover{background:#0A5578}
+.zpet{display:inline-block;margin-top:40px;font-size:13px;color:#0D6E9E;font-weight:600}
+@media print{
+  body{background:#fff;font-size:11pt}
+  .list{box-shadow:none;margin:0;padding:0;max-width:none}
+  .tisk,.zpet{display:none}
+  h2{color:#000}
+  .dopln{background:none;border-bottom:1px solid #000}
+}
+@media (max-width:640px){.strany,.podpisy{grid-template-columns:1fr}.podpisy{gap:32px}}
+</style>
+</head>
+<body>
+<div class="list">
+
+  <div class="tisk"><button type="button" onclick="window.print()">Vytisknout / uložit jako PDF</button></div>
+
+  <header class="hlava">
+    <div>
+      <span class="stitek">Vzor dokumentu</span>
+      <h1>Smlouva o vytvoření webových stránek</h1>
+    </div>
+  </header>
+
+  <div class="strany">
+    <div class="strana">
+      <b>Zhotovitel</b>
+      Roman Mudra<br>
+      IČO <span class="dopln">00000000</span><br>
+      <span class="dopln">[adresa]</span>, Plzeň<br>
+      info@romanmudra.cz<br>
+      Nejsem plátce DPH.
+    </div>
+    <div class="strana">
+      <b>Objednatel</b>
+      <span class="dopln">[jméno / firma]</span><br>
+      IČO <span class="dopln">[IČO]</span><br>
+      <span class="dopln">[adresa]</span><br>
+      <span class="dopln">[e-mail]</span><br>
+      <span class="dopln">[telefon]</span>
+    </div>
+  </div>
+
+  <h2>1. Předmět smlouvy</h2>
+  <p>Zhotovitel se zavazuje vytvořit pro objednatele webové stránky v rozsahu sjednaném v článku 2 a předat je objednateli. Objednatel se zavazuje dílo převzít a zaplatit sjednanou cenu.</p>
+
+  <h2>2. Rozsah díla</h2>
+  <ul>
+    <li>Návrh vzhledu podle značky objednatele</li>
+    <li>Naprogramování stránek <span class="dopln">[počet]</span> podstránek</li>
+    <li>Zobrazení na mobilech, tabletech i počítačích</li>
+    <li>Základní technické SEO (titulky, popisky, mapa webu, strukturovaná data)</li>
+    <li>Kontaktní nebo poptávkový formulář</li>
+    <li>Nasazení na doménu <span class="dopln">[doména]</span></li>
+  </ul>
+  <p>Práce nad rámec tohoto výčtu se sjednávají samostatně a účtují se dohodnutou sazbou.</p>
+
+  <h2>3. Podklady objednatele</h2>
+  <p>Objednatel dodá texty, fotografie, logo a další podklady nejpozději do <span class="dopln">[počet]</span> dnů od podpisu smlouvy. Objednatel odpovídá za to, že je oprávněn tyto podklady užít, a že jejich užitím nedojde k porušení práv třetích osob.</p>
+  <p>O dobu prodlení s dodáním podkladů se prodlužuje termín předání díla.</p>
+
+  <h2>4. Cena a platební podmínky</h2>
+  <p>Cena díla činí <span class="dopln">[částka]</span> Kč. Zhotovitel není plátcem DPH.</p>
+  <p>Záloha ve výši <span class="dopln">[procenta]</span> % je splatná do <span class="dopln">[počet]</span> dnů od podpisu smlouvy, doplatek do <span class="dopln">[počet]</span> dnů od předání díla.</p>
+
+  <h2>5. Termín předání</h2>
+  <p>Zhotovitel předá dílo nejpozději do <span class="dopln">[datum]</span>, za předpokladu, že objednatel dodal podklady podle článku 3.</p>
+
+  <h2>6. Předání a připomínky</h2>
+  <p>Zhotovitel vyzve objednatele k převzetí díla. Objednatel má <span class="dopln">[počet]</span> dnů na uplatnění připomínek. Neuplatní-li je v této lhůtě, považuje se dílo za převzaté bez výhrad.</p>
+  <p>Součástí ceny je <span class="dopln">[počet]</span> kolo připomínek k vzhledu a obsahu. Další úpravy se účtují samostatně.</p>
+
+  <h2>7. Licence a autorská práva</h2>
+  <p>Okamžikem úplného zaplacení ceny získává objednatel časově i územně neomezené právo dílo užívat pro účely svého podnikání. Zdrojové soubory předá zhotovitel objednateli.</p>
+  <p>Zhotovitel je oprávněn uvádět dílo mezi svými referencemi, včetně názvu objednatele a odkazu na web, pokud se strany nedohodnou jinak.</p>
+
+  <h2>8. Následná správa</h2>
+  <p>Následná správa (hosting, doména, zálohy, bezpečnostní aktualizace, drobné úpravy) není součástí ceny díla a sjednává se samostatnou objednávkou za <span class="dopln">[částka]</span> Kč ročně.</p>
+
+  <h2>9. Odpovědnost</h2>
+  <p>Zhotovitel neodpovídá za výpadky způsobené poskytovatelem hostingu, domény ani za zásahy třetích osob do díla po jeho předání.</p>
+
+  <h2>10. Ochrana osobních údajů</h2>
+  <p>Zpracování osobních údajů se řídí zásadami zveřejněnými na <span class="dopln">[adresa webu]</span>/zasady-ochrany-osobnich-udaju.html.</p>
+
+  <h2>11. Závěrečná ustanovení</h2>
+  <p>Smlouva se řídí právním řádem České republiky. Změny lze činit pouze písemně. Smlouva je vyhotovena ve dvou stejnopisech, po jednom pro každou stranu.</p>
+
+  <div class="podpisy">
+    <div class="podpis">V <span class="dopln">[místo]</span> dne <span class="dopln">[datum]</span><br>Zhotovitel — Roman Mudra</div>
+    <div class="podpis">V <span class="dopln">[místo]</span> dne <span class="dopln">[datum]</span><br>Objednatel</div>
+  </div>
+
+  <a class="zpet" href="../index.html">← Zpět na web</a>
+</div>
+</body>
+</html>
