@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="assets/favicon-elektro.svg?v=3" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=4">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -378,12 +378,99 @@
     </div>
   </section>
 
-  <!-- REFERENCE -->
-  <section class="section container" id="reference" aria-labelledby="reference-nadpis">
-    <div class="container--reading reveal">
-      <span class="eyebrow eyebrow--muted">Reference</span>
-      <h2 id="reference-nadpis" class="block-head">Nová firma, ověřené řemeslo</h2>
-      <p class="text-lead">Jako firma teprve začínám, ale elektrikářskému řemeslu se věnuju od vyučení a každou zakázku beru stejně zodpovědně, ať je malá, nebo velká. První reference teprve vznikají — a rád bych, abyste byli mezi mými prvními spokojenými zákazníky.</p>
+  <!-- REALIZACE A REFERENCE
+       ============================================================
+       JAK PŘIDAT FOTKU: vyfoť hotovou práci (z mobilu stačí, ale ať
+       je ostrá a za světla) a ulož ji jako assets/realizace-1.jpg,
+       ideálně 1200 × 900 px. Pak v příslušné dlaždici nahraď celý
+       <div class="galerie-zastup"> tímhle:
+
+         <img src="assets/realizace-1.jpg" alt="Krátký popis práce"
+              width="1200" height="900" loading="lazy">
+
+       Popisek pod fotkou (.galerie-popis) nech — leží v přechodu
+       přes spodek snímku a čte se i na světlé fotce.
+
+       Dlaždic může být kolik chceš, mřížka se srovná sama.
+       Prázdné dlaždice, ke kterým fotku nemáš, prostě smaž.
+
+       ⚠️ Fotky z cizích zakázek zveřejňuj jen se souhlasem majitele
+       a hlídej, ať na nich nejsou vidět osobní údaje ani rozvaděče
+       s viditelným označením cizí firmy.
+       ============================================================ -->
+  <section class="section" id="reference" aria-labelledby="reference-nadpis">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--muted">Ukázky z praxe</span>
+        <h2 id="reference-nadpis">Hotová práce, ne sliby</h2>
+        <p>U elektriky se nedá odbýt to, co pak zmizí pod omítkou. Tady je vidět, jak to po mně vypadá.</p>
+      </div>
+
+      <div class="galerie reveal">
+        <figure class="galerie-polozka">
+          <div class="galerie-zastup">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" stroke="currentColor" stroke-width="2" fill="none"/><path d="m3 16 5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="8.5" cy="9" r="1.5" fill="currentColor"/></svg>
+            <span>assets/realizace-1.jpg</span>
+          </div>
+          <figcaption class="galerie-popis"><small>Rozvaděč</small>[Co to bylo za zakázku]</figcaption>
+        </figure>
+        <figure class="galerie-polozka">
+          <div class="galerie-zastup">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" stroke="currentColor" stroke-width="2" fill="none"/><path d="m3 16 5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="8.5" cy="9" r="1.5" fill="currentColor"/></svg>
+            <span>assets/realizace-2.jpg</span>
+          </div>
+          <figcaption class="galerie-popis"><small>Elektroinstalace</small>[Co to bylo za zakázku]</figcaption>
+        </figure>
+        <figure class="galerie-polozka">
+          <div class="galerie-zastup">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" stroke="currentColor" stroke-width="2" fill="none"/><path d="m3 16 5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="8.5" cy="9" r="1.5" fill="currentColor"/></svg>
+            <span>assets/realizace-3.jpg</span>
+          </div>
+          <figcaption class="galerie-popis"><small>Osvětlení</small>[Co to bylo za zakázku]</figcaption>
+        </figure>
+        <figure class="galerie-polozka">
+          <div class="galerie-zastup">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" stroke="currentColor" stroke-width="2" fill="none"/><path d="m3 16 5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="8.5" cy="9" r="1.5" fill="currentColor"/></svg>
+            <span>assets/realizace-4.jpg</span>
+          </div>
+          <figcaption class="galerie-popis"><small>Zásuvky a vypínače</small>[Co to bylo za zakázku]</figcaption>
+        </figure>
+        <figure class="galerie-polozka">
+          <div class="galerie-zastup">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" stroke="currentColor" stroke-width="2" fill="none"/><path d="m3 16 5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="8.5" cy="9" r="1.5" fill="currentColor"/></svg>
+            <span>assets/realizace-5.jpg</span>
+          </div>
+          <figcaption class="galerie-popis"><small>Rekonstrukce</small>[Co to bylo za zakázku]</figcaption>
+        </figure>
+        <figure class="galerie-polozka">
+          <div class="galerie-zastup">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" stroke="currentColor" stroke-width="2" fill="none"/><path d="m3 16 5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="8.5" cy="9" r="1.5" fill="currentColor"/></svg>
+            <span>assets/realizace-6.jpg</span>
+          </div>
+          <figcaption class="galerie-popis"><small>Oprava</small>[Co to bylo za zakázku]</figcaption>
+        </figure>
+      </div>
+
+      <!-- Citaci nikdy nevymýšlej. Napiš zákazníkovi, ať ti dvě věty
+           pošle písemně, a zeptej se, jestli ji smíš zveřejnit i se
+           jménem. Dokud žádnou nemáš, celý blok .reference-mrizka smaž. -->
+      <div class="reference-mrizka reveal">
+        <blockquote class="reference-karta">
+          <span class="eyebrow eyebrow--muted">[Typ zakázky]</span>
+          <p>„[Sem přesně to, co ti zákazník napsal. Nic neupravuj.]"</p>
+          <cite>— [Jméno], [obec]</cite>
+        </blockquote>
+        <blockquote class="reference-karta">
+          <span class="eyebrow eyebrow--muted">[Typ zakázky]</span>
+          <p>„[Druhá citace. Klidně kratší — stačí dvě věty, hlavně ať jsou pravdivé.]"</p>
+          <cite>— [Jméno], [obec]</cite>
+        </blockquote>
+      </div>
+
+      <div class="callout reveal" style="margin-top: var(--space-6);">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        <p><strong>Portfolio teprve roste</strong>Jako firma začínám, ale řemeslu se věnuju od vyučení. Každou zakázku beru stejně zodpovědně, ať je to výměna vypínače, nebo elektroinstalace celé provozovny — a rád bych, abyste byli mezi mými prvními spokojenými zákazníky.</p>
+      </div>
     </div>
   </section>
 
