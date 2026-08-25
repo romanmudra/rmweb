@@ -16,7 +16,11 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* Základ 17 px místo výchozích 16. Všechny velikosti písma jsou
+   v rem, takže se s ním zvětší i drobné texty v kartách — právě ty
+   byly nejhůř čitelné. Nadpisy mají clamp přepočítaný tak, aby
+   zůstaly na 48 px, tedy tam, kde byly. */
+html { scroll-behavior: smooth; font-size: 17px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
@@ -60,14 +64,22 @@ input, select, textarea { font: inherit; color: inherit; }
 
   --earth: #4A6330;
 
-  --font: "Montserrat", system-ui, sans-serif;
+  /* DVĚ PÍSMA, KAŽDÉ NA SVOU PRÁCI.
+     Montserrat je geometrický grotesk stavěný na nadpisy — má
+     uniformní tahy a široká kulatá písmena. V nadpisu je to jeho
+     síla, v odstavci únava: řádky nemají rytmus a oko po nich
+     klouže. Běžný text proto sází Inter, který je navržený přímo
+     na čtení na displeji. Přesně tak to má i japonske-fasady.cz,
+     tedy web, který se uživateli líbil. */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-nadpis: "Montserrat", system-ui, sans-serif;
 
   /* Velikost je hlavní rozdíl mezi „působí jako Word" a „působí draze".
      Nadpisy sekcí drží 48 px, úvodní nadpis 64 px — stejně jako weby,
      které se uživateli líbily. Menší hodnoty vypadaly jako dokument. */
-  --fs-hero: clamp(2.25rem, 1.2rem + 4.4vw, 4rem);
-  --fs-h2: clamp(1.85rem, 1.3rem + 2.4vw, 3rem);
-  --fs-lead: clamp(1.05rem, 0.95rem + 0.4vw, 1.22rem);
+  --fs-hero: clamp(2.1rem, 1.1rem + 4.4vw, 3.77rem);
+  --fs-h2: clamp(1.74rem, 1.2rem + 2.4vw, 2.83rem);
+  --fs-lead: clamp(1rem, 0.9rem + 0.4vw, 1.15rem);
   /* svislý prostor sekcí — druhá polovina téhož rozdílu */
   --sekce-y: clamp(76px, 8vw, 132px);
 
@@ -90,14 +102,27 @@ body{
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font);
-  font-size: 16px;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+  line-height: 1.7;
+  /* Záměrně BEZ `-webkit-font-smoothing: antialiased`. To vypnutí
+     subpixelového vyhlazování ztenčuje tahy a text pak působí
+     vybledle a rozdrbaně — přesně to, na co si uživatel stěžoval. */
 }
 
-h1, h2, h3, h4 { font-family: var(--font); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; color: var(--ink); }
+h1, h2, h3, h4 { font-family: var(--font-nadpis); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; color: var(--ink); }
 p { color: var(--ink-soft); }
-strong { color: var(--ink); font-weight: 700; }
+strong { color: var(--ink); font-weight: 600; }
+
+/* Prvky, které nesou značku nebo se chovají jako nadpis, zůstávají
+   v Montserratu — jsou krátké, takže se na nich jeho tvary projeví
+   jako charakter, ne jako námaha. */
+.logo-wordmark,
+.eyebrow,
+.avatar-circle span,
+.uvod-portret-zastup strong,
+.pripad-zastup span:first-child,
+.balicek-cena strong,
+.pricing-price{ font-family: var(--font-nadpis); }
 
 .container{ max-width: var(--container); margin-inline: auto; padding-inline: var(--pad-inline); }
 .container--narrow{ max-width: 760px; }
@@ -668,7 +693,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   justify-content: center; gap: var(--space-2); color: var(--ink-faint); font-size: .9rem;
   font-weight: 600; text-align: center; padding: var(--space-5);
 }
-.pripad-zastup span{ font-size: 2.4rem; font-weight: 800; color: var(--line); letter-spacing: .04em; }
+/* Zástupný text musí být čitelný — dokud sem Roman nedá snímek webu,
+   je to normální obsah stránky. Při barvě --line měl kontrast 1,14. */
+.pripad-zastup span{ font-size: 2.4rem; font-weight: 800; color: #767E8A; letter-spacing: .04em; }
 
 /* =========================================================
    Galerie realizací
