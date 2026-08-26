@@ -779,7 +779,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .karta-3d .form-grid{ gap: var(--space-5); }
 
 /* ---------- Patička: sloupec se soubory a ikony ---------- */
-.footer-col h4{ font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.68); margin-bottom: var(--space-2); font-weight: 800; }
+/* h3, ne h4 — v patičce následují po sekcích s h2 a přeskočená
+   úroveň mate čtečky obrazovky. */
+.footer-col h3{ font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.68); margin-bottom: var(--space-2); font-weight: 800; }
 .footer-col a{ display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.82); font-size: .92rem; min-height: 40px; transition: color .2s var(--ease); font-weight: 500; }
 .footer-col a:hover{ color: #fff; }
 .footer-col a svg{ width: 15px; height: 15px; flex-shrink: 0; color: var(--brand-light, #6FBEFF); }

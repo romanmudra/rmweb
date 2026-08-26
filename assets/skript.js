@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    Roman Mudra — sdílený skript pro celý web
    ========================================================= */
 
@@ -7,7 +7,7 @@
    --------------------------------------------------------- */
 
 /* E-mail, na který chodí poptávky (a který se zobrazuje jako záloha) */
-const CONTACT_EMAIL = "info@romanmudra.cz";
+const CONTACT_EMAIL = "roman.mudra@icloud.com";
 
 /* Adresa služby, která poptávky doručí (např. Formspree).
    Dokud je prázdná, formulář jede v nouzovém režimu: otevře
