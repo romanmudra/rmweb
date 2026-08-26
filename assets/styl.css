@@ -41,8 +41,12 @@ input, select, textarea { font: inherit; color: inherit; }
 :root{
   --paper: #FFFFFF;
   /* Skoro bílá, ne šedá. Odlišení sekcí obstarává vlasová linka
-     nahoře a dole — plocha už jen naznačuje, že jde o jiný blok. */
-  --paper-alt: #F8F9FB;
+     nahoře a dole — plocha už jen naznačuje, že jde o jiný blok.
+     Používá se JEN na velké pruhy sekcí. */
+  --paper-alt: #FBFCFD;
+  /* Drobné výplně uvnitř bílých karet (štítky, citace, spodek
+     balíčku) potřebují víc tónu, jinak by na bílé zmizely. */
+  --fill-soft: #F1F3F6;
   --card: #FFFFFF;
   --ink: #17181A;
   /* Barva běžného textu. Původní #63666C mělo na šedém pruhu kontrast
@@ -137,7 +141,9 @@ strong { color: var(--ink); font-weight: 600; }
 .container--narrow{ max-width: 760px; }
 .container--reading{ max-width: 720px; }
 .section{ padding-block: var(--sekce-y); position: relative; }
-.section--alt{ background: var(--paper-alt); border-block: 1px solid var(--line-soft); }
+/* Čím světlejší plocha, tím víc práce odvádí linka — plocha už sekci
+   sama neoddělí, takže linka je z tmavší --line, ne --line-soft. */
+.section--alt{ background: var(--paper-alt); border-block: 1px solid var(--line); }
 .section--flush-top{ padding-top: 0; }
 
 /* kotvy pod lepivou hlavičkou nesmí skončit schované pod ní */
@@ -430,7 +436,7 @@ body.uvod-foto .site-header button:focus-visible{ outline-color: #fff; }
 .tile-title{ font-size: 1.55rem; margin-bottom: var(--space-3); }
 .tile-desc{ font-size: .98rem; color: var(--ink-soft); max-width: 40ch; }
 .tile-points{ display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }
-.tile-point{ font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--paper-alt); border-radius: var(--radius-full); padding: 5px 12px; }
+.tile-point{ font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--fill-soft); border-radius: var(--radius-full); padding: 5px 12px; }
 .tile-cta{ display: inline-flex; align-items: center; gap: 8px; font-size: .9rem; font-weight: 700; color: var(--ink); margin-top: var(--space-6); }
 .tile-cta svg{ width: 16px; height: 16px; transition: transform .25s var(--ease); }
 .tile:hover .tile-cta svg{ transform: translateX(4px); }
@@ -509,10 +515,12 @@ body.uvod-foto .site-header button:focus-visible{ outline-color: #fff; }
 
 /* ---------- Oblast působnosti ---------- */
 .area-chips{ display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
-.area-chip{ font-size: .88rem; font-weight: 600; padding: 10px 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--ink); background: var(--paper); }
+/* Výplň, ne bílá. Štítky leží na skoro bílém pruhu, takže bílé
+   pozadí by z nich udělalo jen text v tenkém rámečku. */
+.area-chip{ font-size: .88rem; font-weight: 600; padding: 10px 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--ink); background: var(--fill-soft); }
 
 /* ---------- Formulář ---------- */
-.form-panel{ background: var(--paper-alt); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-7); }
+.form-panel{ background: var(--fill-soft); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-7); }
 .form-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
 .form-field{ display: flex; flex-direction: column; gap: var(--space-2); }
 .form-field--full{ grid-column: 1 / -1; }
@@ -660,7 +668,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faze-seznam{ display: flex; flex-direction: column; gap: var(--space-3); }
 .faze-polozka{ display: flex; gap: var(--space-3); font-size: .95rem; color: var(--ink); align-items: flex-start; font-weight: 500; }
 .faze-polozka svg{ width: 16px; height: 16px; color: var(--brand); flex-shrink: 0; margin-top: 4px; }
-.balicek-pata{ background: var(--paper-alt); padding: var(--space-6) var(--space-7); text-align: center; border-top: 1px solid var(--line); }
+.balicek-pata{ background: var(--fill-soft); padding: var(--space-6) var(--space-7); text-align: center; border-top: 1px solid var(--line); }
 /* :not() je tu schválně — bez něj by tenhle selektor chytil i poznámku
    pod tlačítkem a udělal z ní druhý tučný nadpis. */
 .balicek-pata > p:not(.balicek-pozn){ font-weight: 700; color: var(--ink); margin-bottom: var(--space-4); }
@@ -682,7 +690,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pripad h3{ font-size: clamp(1.35rem, 1.1rem + 1.1vw, 1.8rem); margin-top: var(--space-2); letter-spacing: -0.025em; }
 .pripad-popis{ margin-top: var(--space-4); font-size: .98rem; }
 .pripad-citat{
-  margin-top: var(--space-5); background: var(--paper-alt); border-left: 3px solid var(--brand);
+  margin-top: var(--space-5); background: var(--fill-soft); border-left: 3px solid var(--brand);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: var(--space-5);
 }
 .pripad-citat p{ font-size: .95rem; font-style: italic; color: var(--ink); }
@@ -692,7 +700,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pripad-odkaz:hover svg{ transform: translate(3px,-3px); }
 .pripad-nahled{
   display: block; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line);
-  background: var(--paper-alt); position: relative; aspect-ratio: 16 / 11;
+  background: var(--fill-soft); position: relative; aspect-ratio: 16 / 11;
   transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .pripad-nahled:hover{ transform: translateY(-3px); box-shadow: 0 22px 44px -28px rgba(23,24,26,.4); }
@@ -714,7 +722,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .galerie{ display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
 .galerie-polozka{
   position: relative; border-radius: var(--radius-md); overflow: hidden;
-  border: 1px solid var(--line); background: var(--paper-alt); aspect-ratio: 4 / 3;
+  border: 1px solid var(--line); background: var(--fill-soft); aspect-ratio: 4 / 3;
   transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .galerie-polozka:hover{ transform: translateY(-3px); box-shadow: 0 22px 44px -28px rgba(23,24,26,.45); }
