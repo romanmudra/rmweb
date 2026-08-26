@@ -40,10 +40,12 @@ input, select, textarea { font: inherit; color: inherit; }
 
 :root{
   --paper: #FFFFFF;
-  /* Skoro bílá, ne šedá. Odlišení sekcí obstarává vlasová linka
-     nahoře a dole — plocha už jen naznačuje, že jde o jiný blok.
-     Používá se JEN na velké pruhy sekcí. */
-  --paper-alt: #FBFCFD;
+  /* Světlá stříbrná. Hledal se odstín, který je jasně vidět jako jiný
+     blok, ale nepůsobí jako těžká šedá plocha. #FBFCFD bylo na větším
+     monitoru k nerozeznání od bílé, #F2F4F7 zase moc tmavé a modré.
+     Tenhle tón má proti bílé jen tři body do modra, takže čte jako
+     stříbrná, ne jako bledě modrá. Používá se JEN na pruhy sekcí. */
+  --paper-alt: #F4F6F7;
   /* Drobné výplně uvnitř bílých karet (štítky, citace, spodek
      balíčku) potřebují víc tónu, jinak by na bílé zmizely. */
   --fill-soft: #F1F3F6;
@@ -515,9 +517,10 @@ body.uvod-foto .site-header button:focus-visible{ outline-color: #fff; }
 
 /* ---------- Oblast působnosti ---------- */
 .area-chips{ display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
-/* Výplň, ne bílá. Štítky leží na skoro bílém pruhu, takže bílé
-   pozadí by z nich udělalo jen text v tenkém rámečku. */
-.area-chip{ font-size: .88rem; font-weight: 600; padding: 10px 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--ink); background: var(--fill-soft); }
+/* Bílá, protože štítky leží na stříbrném pruhu — tam vystoupí.
+   Opačně to platí pro .tile-point, ten leží na bílé kartě a bílou
+   výplň mít nemůže. */
+.area-chip{ font-size: .88rem; font-weight: 600; padding: 10px 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--ink); background: var(--paper); }
 
 /* ---------- Formulář ---------- */
 .form-panel{ background: var(--fill-soft); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-7); }
