@@ -1,3 +1,10 @@
+/* Písma se načítají i odsud, nejen z <link> v HTML. Je to pojistka:
+   kdyby se nahrál nový styl a staré HTML, chybělo by Inter a text
+   by spadl do systémového písma. Vypadá to jako „změna se neprojevila",
+   přitom se projevila — jen chybí písmo. Prohlížeč si soubor stáhne
+   jen jednou, takže dvojí zápis nic nestojí. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+
 /* =========================================================
    Roman Mudra — osobní brand
    Sdílený styl pro všechny stránky webu.
@@ -33,14 +40,16 @@ input, select, textarea { font: inherit; color: inherit; }
 
 :root{
   --paper: #FFFFFF;
-  --paper-alt: #F4F5F8;
+  /* Skoro bílá, ne šedá. Odlišení sekcí obstarává vlasová linka
+     nahoře a dole — plocha už jen naznačuje, že jde o jiný blok. */
+  --paper-alt: #F8F9FB;
   --card: #FFFFFF;
   --ink: #17181A;
   /* Barva běžného textu. Původní #63666C mělo na šedém pruhu kontrast
      jen 5,22 — technicky prošlo, ale číst se to nedalo. Teď 8,62,
      a pořád je to o stupeň světlejší než nadpisy, takže hierarchie drží. */
-  --ink-soft: #41464E;
-  --ink-faint: #565B63;
+  --ink-soft: #363B43;
+  --ink-faint: #4E535B;
   --line: #E4E7EB;
   --line-soft: #EDEFF2;
 
@@ -128,7 +137,7 @@ strong { color: var(--ink); font-weight: 600; }
 .container--narrow{ max-width: 760px; }
 .container--reading{ max-width: 720px; }
 .section{ padding-block: var(--sekce-y); position: relative; }
-.section--alt{ background: var(--paper-alt); }
+.section--alt{ background: var(--paper-alt); border-block: 1px solid var(--line-soft); }
 .section--flush-top{ padding-top: 0; }
 
 /* kotvy pod lepivou hlavičkou nesmí skončit schované pod ní */
